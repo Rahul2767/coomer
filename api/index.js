@@ -224,11 +224,18 @@ app.put('/files/:id', (req, res) => {
 // DELETE File
 app.delete('/files/:id', (req, res) => {
     const { id } = req.params;
-    connection.query('DELETE FROM files WHERE id = ?', [id], (err) => {
+    connection.query('DELETE FROM files WHERE id = ?', [id], (err,result) => {
         if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: 'File deleted' });
+        res.json(result);
     });
 });
+
+app.get('/count', (req,res)=> {
+    connection.query('SELECT COUNT(*) AS COUNT FROM files;', (err,result) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(result);
+    });
+})
 
 app.get('/files/size', (req, res) => {
     const { limit, offset } = req.query;
@@ -258,10 +265,7 @@ app.get('/files/size', (req, res) => {
             averageSizeOfVideo: +(userStats[user].totalSize / userStats[user].count / 1024 / 1024).toFixed(2)
         }));
 
-        res.json({
-            total : response.length + 1,
-            ...response
-        });
+        res.json(response);
     });
 });
 
