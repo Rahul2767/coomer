@@ -274,12 +274,12 @@ app.listen(port, () => {
 
 
 
-process.on('unhandledRejection', (reason, promise) => {
-    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-    process.exit(1);
-});
+// process.on('unhandledRejection', (reason, promise) => {
+//     console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+//     process.exit(1);
+// });
 
-runBatchUpdate().catch(error => {
-    console.error('Fatal error:', error);
-    process.exit(1);
-});
+// runBatchUpdate().catch(error => {
+//     console.error('Fatal error:', error);
+//     process.exit(1);
+// });
