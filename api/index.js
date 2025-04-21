@@ -2,7 +2,7 @@ import express from 'express';
 import mysql from 'mysql2';
 import fs from 'fs';
 import bodyParser from 'body-parser';
-import {runBatchUpdate} from './batchUpdator.js';
+// import {runBatchUpdate} from './batchUpdator.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
