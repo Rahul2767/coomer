@@ -120,6 +120,10 @@ app.get('/creators', (req, res) => {
     });
 });
 
+app.get('/', (req,res) => {
+    res.send('Server is working');
+})
+
 // UPDATE Creator
 app.put('/creators/:id', (req, res) => {
     const { name, platform } = req.body;
