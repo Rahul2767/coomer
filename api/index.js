@@ -258,7 +258,10 @@ app.get('/files/size', (req, res) => {
             averageSizeOfVideo: +(userStats[user].totalSize / userStats[user].count / 1024 / 1024).toFixed(2)
         }));
 
-        res.json(response);
+        res.json({
+            total : response.length + 1,
+            ...response
+        });
     });
 });
 
